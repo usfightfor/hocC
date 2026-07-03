@@ -5,7 +5,9 @@ int main() {
    printf("Vui long nhap diem trung binh cua ban: \n");
    scanf("%f", &dtb);
 
-   if(dtb>=0.0 && dtb<4.0)
+   if(dtb > 0.0 && dtb < 10.0)
+   {
+   if(dtb<4.0)
    {
       printf("Xep loai yeu");
    }
@@ -21,13 +23,13 @@ int main() {
    {
       printf("Xep loai kha");
    }
-   else if(dtb >10.0)
-   {
-      printf("Vui long nhap diem trung binh be hon 10.0");
-   }
    else 
    {
       printf("Xep loai Gioi");
+   }
+   }
+   else {
+      printf("Vui long nhap gt hop le");
    }
    return 0;
 }
