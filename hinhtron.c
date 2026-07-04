@@ -1,35 +1,53 @@
 #include <stdio.h>
 #include <math.h>
-int main() {
-   float dtb;
-   printf("Vui long nhap diem trung binh cua ban: \n");
-   scanf("%f", &dtb);
 
-   if(dtb > 0.0 && dtb < 10.0)
+int main() {
+   float a, b, c, delta, x_1, x_2;
+
+   printf("Nhap 3 he so a b c cho bieu thuc:\n");
+   printf("a = "); 
+   scanf("%f", &a);
+   printf("b = "); 
+   scanf("%f", &b);
+   printf("c = "); 
+   scanf("%f", &c);
+
+   if(a==0)
    {
-   if(dtb<4.0)
-   {
-      printf("Xep loai yeu");
-   }
-   else if(dtb>=4.0 && dtb<5.5)
-   {
-      printf("Xep loai trung binh yeu");
-   }
-   else if(dtb>=5.5 && dtb<7.0)
-   {
-      printf("Xep loai trung binh");
-   }
-   else if(dtb>=7.0 && dtb<8.5)
-   {
-      printf("Xep loai kha");
+      if(b==0)
+      {
+         if(c==0)
+         {
+            printf("Phuong trinh co vo so nghiem ");
+         }
+         else 
+         {
+            printf("Phuong trinh vo nghiem");
+         }
+      }
+      else 
+      {
+         printf("Phuong trinh co mot nghiem x = %.2f", -c/b);
+      }
    }
    else 
    {
-      printf("Xep loai Gioi");
-   }
-   }
-   else {
-      printf("Vui long nhap gt hop le");
+      delta = b*b - 4*a*c ;
+      if(delta>0)
+      {
+         x_1 = (-b+sqrt(delta))/(2*a);
+         x_2 = (-b-sqrt(delta))/(2*a);
+         printf("Phuong trinh co hai nghiem phan biet x1= %.2f, x2 = %.2f", x_1, x_2);
+      }
+      else if(delta ==0)
+      {
+         x_1 = x_2 = -b/(2*a);
+         printf("Phuong trinh co mot nghiem kep x1 = x2 = %.2f", x_1);
+      }
+      else
+      {
+         printf ("Phuong trinh vo nghiem");
+      }
    }
    return 0;
 }
