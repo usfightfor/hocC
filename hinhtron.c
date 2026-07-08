@@ -1,53 +1,49 @@
 #include <stdio.h>
 #include <math.h>
 
-int main() {
-   float a, b, c, delta, x_1, x_2;
-
-   printf("Nhap 3 he so a b c cho bieu thuc:\n");
-   printf("a = "); 
-   scanf("%f", &a);
-   printf("b = "); 
-   scanf("%f", &b);
-   printf("c = "); 
-   scanf("%f", &c);
-
-   if(a==0)
-   {
-      if(b==0)
-      {
-         if(c==0)
-         {
-            printf("Phuong trinh co vo so nghiem ");
-         }
-         else 
-         {
-            printf("Phuong trinh vo nghiem");
-         }
-      }
-      else 
-      {
-         printf("Phuong trinh co mot nghiem x = %.2f", -c/b);
-      }
+void nhapcanh(float *x){
+   scanf("%f", x);
+}
+int kiemtratamgiac(float a, float b, float c){
+   if(a + b > c && b + c > a && c + a > b && a > 0 && b >0 && c >0){
+   return 1;
    }
-   else 
-   {
-      delta = b*b - 4*a*c ;
-      if(delta>0)
-      {
-         x_1 = (-b+sqrt(delta))/(2*a);
-         x_2 = (-b-sqrt(delta))/(2*a);
-         printf("Phuong trinh co hai nghiem phan biet x1= %.2f, x2 = %.2f", x_1, x_2);
-      }
-      else if(delta ==0)
-      {
-         x_1 = x_2 = -b/(2*a);
-         printf("Phuong trinh co mot nghiem kep x1 = x2 = %.2f", x_1);
-      }
-      else
-      {
-         printf ("Phuong trinh vo nghiem");
-      }
+   else{
+      printf("Vui long nhap lai\n");
    }
    return 0;
+}
+void phanloai(float a, float b, float c){
+   if(a == b && b == c){
+      printf("Tam giac deu\n");
+   }
+   else if(a == b || b == c || a == c){
+      printf("Tam giac can\n");
+   }
+   else if(a * a + b * b == c * c ||a * a + c * c == b * b||c * c + b * b == a * a){
+      printf("Tam giac vuong\n");
+   }
+   else{
+      printf("Tam giac thuong\n");
+   }
+}
+void tinh(float a, float b, float c){
+   float p = (a + b + c)/2;
+   float s = sqrt(p*(p-a)*(p-b)*(p-c));
+   printf("Chu vi cua tam giac la %.2f\n", 2*p);
+   printf("Dien tich cua tam giac la %.2f\n", s);
+}
+int main(){
+   float a, b, c;
+   printf("Nhap canh a: \n");
+   nhapcanh(&a); // a nhan gt tu scanf
+   printf("Nhap canh b: \n");
+   nhapcanh(&b);
+   printf("Nhap canh c: \n");
+   nhapcanh(&c); 
+   if(kiemtratamgiac(a, b, c) == 1){
+   phanloai(a, b, c);
+   tinh(a, b, c);
+   }
+return 0;
 }
