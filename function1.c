@@ -40,4 +40,5 @@ int main() {
         printf("Phan so rut gon la: %d/%d", ts, ms);
     }
 return 0;
+
 }
